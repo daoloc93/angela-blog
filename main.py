@@ -14,8 +14,8 @@ from sqlalchemy.orm import relationship
 import os
 
 app = Flask(__name__)
-OWN_SECRET_KEY = os.environ["SECRET_KEY"]
-app.config['SECRET_KEY'] = os.environ.get["OWN_SECRET_KEY"]
+# OWN_SECRET_KEY = os.environ("SECRET_KEY")
+app.config['SECRET_KEY'] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False,
