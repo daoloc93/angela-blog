@@ -11,13 +11,15 @@ from flask_gravatar import Gravatar
 from functools import wraps
 from flask import abort
 from sqlalchemy.orm import relationship
-
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+OWN_SECRET_KEY = os.environ["SECRET_KEY"]
+app.config['SECRET_KEY'] = os.environ.get["OWN_SECRET_KEY"]
 ckeditor = CKEditor(app)
 Bootstrap(app)
-gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
+gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False,
+                    base_url=None)
 
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
